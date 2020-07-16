@@ -1,3 +1,12 @@
 *.BAT
 *.txt
 *.xlsx
+*.html
+index.js
+inorder.js
+post.js
+preorder-tree traversal.js
+test.js
+.DS_Store
+.gitignore
+01twosum.js
