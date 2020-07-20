@@ -68,38 +68,41 @@
 // };
 
 var minWindow = function (s, t) {
-  let need = {};
-  let r = 0,
-    l = 0,
-    newl = 0,
-    min = Infinity;
-  let needType = 0;
-  for (let char of s) {
-    if (!need[char]) {
-      need[cahr] = 1;
-      needType++;
+  let needed = 0;
+  let map = {};
+  for (let c of t) {
+    if (map[c]) {
+      map[c]++;
     } else {
-      need[char]++;
+      map[c] = 1;
+      needed++;
     }
   }
-
-  for (; r < s.length; r++) {
-    if (map[s[r]]) {
+  let l = 0,
+    r = 0;
+  let min = Infinity;
+  let newL;
+  while (r < s.length) {
+    if (map[s[r]] !== undefined) {
       map[s[r]]--;
-    } else if (map[s[r]] === 0) {
-      needType--;
-    } else if (needType === 0) {
-      while (needType === 0) {
-        min = Math.min(min, r - l + 1);
-        newl = l;
-        l++;
-        if (mpa[s[l]]) {
-          map[s[l]]++;
-          if (map[s[l]] > 0) needType++;
+      if (map[s[r]] === 0) {
+        needed--;
+        while (needed === 0) {
+          if (min > r - l + 1) {
+            min = r - l + 1;
+            newL = l;
+          }
+          if (map[s[l]] !== undefined) {
+            map[s[l]]++;
+          }
+          if (map[s[l]] > 0) needed++;
+          l++;
         }
       }
     }
+
+    r++;
   }
-  return s.slice(newl, r + 1);
+  return s.substring(newL, newL + min);
 };
 // @lc code=end

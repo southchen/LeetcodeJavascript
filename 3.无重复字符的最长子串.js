@@ -9,6 +9,7 @@
  * @param {string} s
  * @return {number}
  */
+//double pointers
 // var lengthOfLongestSubstring = function (s) {
 //   let index = 0;
 //   let max = 0;
@@ -23,5 +24,6 @@
 //   }
 //   return max;
 // };
+//slinding window
 
 // @lc code=end

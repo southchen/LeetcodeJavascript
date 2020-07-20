@@ -39,41 +39,40 @@
 //   }
 //   return res;
 // };
+//
 var findAnagrams = function (s, p) {
-  let l = 0,
-    r = 0;
   let res = [];
-  let need = {},
-    needType = 0;
-  for (let char of p) {
-    if (need[char]) {
-      need[char]++;
+  let needed = 0;
+  let map = {};
+  for (let c of p) {
+    if (map[c]) {
+      map[c]++;
     } else {
-      need[char] = 1;
-      needType++;
+      map[c] = 1;
+      needed++;
     }
   }
-  for (; r < s.length; r++) {
-    if (need[s[r]] != undefined) {
-      need[s[r]]--;
-      if (need[s[r]] == 0) {
-        needType--;
-      }
-    }
-    while (needType == 0) {
-      if (r - l + 1 === p.length) {
-        res.push(l);
-      }
-      if (need[s[l]] != undefined) {
-        need[s[l]]++;
-        if (need[s[l]] > 0) {
-          needType++;
+  let l = 0,
+    r = 0;
+  while (r < s.length) {
+    if (map[s[r]] != undefined) {
+      map[s[r]]--;
+      if (map[s[r]] === 0) {
+        needed--;
+        while (needed === 0) {
+          Object.values(map).every((v) => v == 0) && res.push(l);
+          if (map[s[l]] != undefined) {
+            map[s[l]]++;
+            if (map[s[l]] > 0) {
+              needed++;
+            }
+          }
+          l++;
         }
       }
-      l++;
     }
+    r++;
   }
   return res;
 };
-
 // @lc code=end
