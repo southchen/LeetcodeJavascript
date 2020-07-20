@@ -9,29 +9,39 @@
  * @param {number[]} nums
  * @return {number}
  */
-/*题目就是要我们找出两个单增区间的边界
-很容易想到二分查找
-在循环中求出 中间元素，循环条件是 left < right，结束遍历时，我们让left和right是相邻的整数，并且我们让left是我们要的
-如果 nums[mid] > nums[right] ，则说明 mid 处在左边的单增区间，目标元素在mid的右侧，所以我们让 left = mid + 1;
-否则，mid 处在右边的单增区间中，目标元素在mid的左侧，我们让right = mid;
-一个+1，一个不+1，到时候取 left 就好
+/*
+找出单调递增的左边界
+左值 < 中值, 中值 < 右值 ：没有旋转，最小值在最左边，可以收缩右边界
+
+        右
+     中
+ 左
+左值 > 中值, 中值 < 右值 ：有旋转，最小值在左半边，可以收缩右边界
+
+ 左       
+         右
+     中
+左值 < 中值, 中值 > 右值 ：有旋转，最小值在右半边，可以收缩左边界
+
+     中  
+ 左 
+         右
+
+
 */
 var findMin = function (nums) {
   let l = 0,
     r = nums.length - 1;
-
-  let min = Infinity;
-  //the existing
   while (l < r) {
     let mid = (r + l) >> 1;
-
-    if (nums[mid] > nums[l]) {
-      let l = mid + 1;
+    //compare to right pointer
+    if (nums[mid] > nums[r]) {
+      l = mid + 1;
     } else {
       r = mid;
     }
   }
-  //return the l pointer
   return nums[l];
 };
+
 // @lc code=end
