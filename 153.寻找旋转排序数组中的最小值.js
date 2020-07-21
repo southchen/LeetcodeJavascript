@@ -11,6 +11,7 @@
  */
 /*
 找出单调递增的左边界
+对比nums[r]的原因：
 左值 < 中值, 中值 < 右值 ：没有旋转，最小值在最左边，可以收缩右边界
 
         右
@@ -26,7 +27,10 @@
      中  
  左 
          右
-
+左《中《右。不存在
+左
+    中  
+        右
 
 */
 var findMin = function (nums) {
@@ -41,6 +45,8 @@ var findMin = function (nums) {
       r = mid;
     }
   }
+  //when exist loop l===r
+  //r points to the last element, if nums[r]==target, can be found
   return nums[l];
 };
 

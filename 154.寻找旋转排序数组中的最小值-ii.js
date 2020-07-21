@@ -19,6 +19,8 @@ var findMin = function (nums) {
     } else if (nums[mid] < nums[r]) {
       r = mid;
     } else {
+      //when nums[mid]===nums[r]
+      //shrink the right, otherwise if shrink l++, will skip the target
       r--;
     }
   }

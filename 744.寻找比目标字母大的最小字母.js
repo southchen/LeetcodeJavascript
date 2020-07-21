@@ -18,8 +18,6 @@ var nextGreatestLetter = function (letters, target) {
     r = letters.length;
   while (l < r) {
     let mid = (l + r) >> 1;
-
-    // if (letters[mid] == target) return letter[mid + 1];❌
     //find the rihgt edge of targets
     if (letters[mid] > target) {
       r = mid - 1;
