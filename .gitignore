@@ -10,3 +10,4 @@ test.js
 .DS_Store
 .gitignore
 01twosum.js
+.vscode
