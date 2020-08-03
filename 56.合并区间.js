@@ -9,6 +9,7 @@
  * @param {number[][]} intervals
  * @return {number[][]}
  */
+//greedy?
 /**
  * 变量命名释义
 candidate：候选者。候选进入 res 数组，初始值为第一个子数组

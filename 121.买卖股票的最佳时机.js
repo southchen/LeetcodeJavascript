@@ -9,6 +9,7 @@
  * @param {number[]} prices
  * @return {number}
  */
+//此问题的本质其实就是求波峰浪谷的差值的最大值
 // var maxProfit = function (prices) {
 //   let minprice = Number.MAX_SAFE_INTEGER;
 //   let max = 0;
