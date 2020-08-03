@@ -10,10 +10,19 @@
  * @param {number} k
  * @return {number[]}
  */
-
+/**
+ * 处理前 k 个元素，初始化双向队列。
+ * 遍历整个数组。在每一步 :
+ * 清理双向队列 :
+  - 只保留当前滑动窗口中有的元素的索引。
+  - 移除比当前元素小的所有元素，它们不可能是最大的。
+  *将当前元素添加到双向队列中。
+  *将 deque[0] 添加到输出中。
+*返回输出数组。
+ */
 var maxSlidingWindow = function (nums, k) {
-  // 双端队列优化时间复杂度, 时间复杂度O(n)
-  const deque = []; // 存放在接下来的滑动窗口可能成为最大值的数
+  // 双端队列优化时间复杂度, 时间复杂度O(n)，空间O(n)
+  const deque = []; // 存放在接下来的滑动窗口可能成为最大值的数的索引
   const res = [];
   for (let i = 0; i < nums.length; i++) {
     // 清空失效元素
@@ -26,7 +35,7 @@ var maxSlidingWindow = function (nums, k) {
     }
     //push新数值
     deque.push(i);
-
+    //大于k后才开始push答案
     if (i >= k - 1) {
       res.push(nums[deque[0]]);
     }
