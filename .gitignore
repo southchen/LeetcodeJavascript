@@ -1,6 +1,6 @@
 *.BAT
 *.txt
-*.xlsx
+# *.xlsx
 *.html
 index.js
 inorder.js
