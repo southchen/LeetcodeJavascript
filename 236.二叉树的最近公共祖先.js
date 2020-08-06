@@ -27,6 +27,7 @@
 左、右子树均能找到:说明此时的p节点和q节点在当前root节点两侧，返回root节点
  */
 var lowestCommonAncestor = function (root, p, q) {
+  // 遇到null节点返回null，遇到p或q，返回p或q
   if (root == null || root == p || root == q) {
     return root;
   }
@@ -34,12 +35,8 @@ var lowestCommonAncestor = function (root, p, q) {
   let right = lowestCommonAncestor(root.right, p, q);
   if (left && right) {
     return root;
-  } else if (left) {
-    return left;
-  } else if (right) {
-    return right;
   }
-  return null;
+  return left ? left : right;
 };
 
 // var lowestCommonAncestor = function (root, p, q) {

@@ -17,6 +17,17 @@
  * @param {number[]} inorder
  * @return {TreeNode}
  */
+//分治
+/**
+ * 从前序找到当前root => new TreeNode
+ * 在中序中根据root，找到中心点索引，划分左右两边
+ * 在前序根据中心点索引划分两边
+ * root.left是左边的下一个root
+ * root.right是右边的下一个root
+ * 子问题，相当于把已经确定的node去掉，再次调用
+ * 可以递归实现
+ * */
+
 var buildTree = function (preorder, inorder) {
   if (!preorder.length) return null;
   let curRoot = preorder[0];

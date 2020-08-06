@@ -83,20 +83,20 @@ var inorderTraversal = function (root) {
 //   return res;
 // };
 //✨不需要标记左子树已经访问过
-// var inorderTraversal = function (root) {
-//   var result = [];
-//   var stack = [];
-//   var p = root;
-//   while (stack.length != 0 || p != null) {
-//     if (p != null) {
-//       stack.push(p);
-//       p = p.left;
-//     } else {
-//       var node = stack.pop();
-//       result.push(node.val); // Add after all left children
-//       p = node.right;
-//     }
-//   }
-//   return result;
-// };
+var inorderTraversal = function (root) {
+  var result = [];
+  var stack = [];
+  var p = root;
+  while (stack.length != 0 || p != null) {
+    if (p != null) {
+      stack.push(p);
+      p = p.left;
+    } else {
+      var node = stack.pop();
+      result.push(node.val); // Add after all left children
+      p = node.right;
+    }
+  }
+  return result;
+};
 // @lc code=end
