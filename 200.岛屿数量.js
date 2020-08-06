@@ -17,47 +17,47 @@
 如果越界了或遇到 0 ，则跳过，不用转 0
 一层层的出列入列，直到没有可以入列的节点，则当前岛屿的所有 1 都转 0 了
  */
-// const numIslands = (grid) => {
-//   let count = 0;
-//   let queue = [];
-//   for (let i = 0; i < grid.length; i++) {
-//     for (let j = 0; j < grid[0].length; j++) {
-//       if (grid[i][j] === '1') {
-//         count++;
-//         grid[i][j] = '0'; // 做标记，避免重复遍历
-//         queue.push([i, j]);
-//         turnZero(queue, grid);
-//       }
-//     }
-//   }
-//   return count;
-// };
-// function turnZero(queue, grid) {
-//   const dirs = [
-//     [0, 1],
-//     [1, 0],
-//     [0, -1],
-//     [-1, 0],
-//   ];
-//   while (queue.length) {
-//     const cur = queue.shift();
-//     for (const dir of dirs) {
-//       const x = cur[0] + dir[0];
-//       const y = cur[1] + dir[1];
-//       if (
-//         x < 0 ||
-//         x >= grid.length ||
-//         y < 0 ||
-//         y >= grid[0].length ||
-//         grid[x][y] !== '1'
-//       ) {
-//         continue;
-//       }
-//       grid[x][y] = '0';
-//       queue.push([x, y]);
-//     }
-//   }
-// }
+const numIslands = (grid) => {
+  let count = 0;
+  let queue = [];
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === '1') {
+        count++;
+        grid[i][j] = '0'; // 做标记，避免重复遍历
+        queue.push([i, j]);
+        turnZero(queue, grid);
+      }
+    }
+  }
+  return count;
+};
+function turnZero(queue, grid) {
+  const dirs = [
+    [0, 1],
+    [1, 0],
+    [0, -1],
+    [-1, 0],
+  ];
+  while (queue.length) {
+    const cur = queue.shift();
+    for (const dir of dirs) {
+      const x = cur[0] + dir[0];
+      const y = cur[1] + dir[1];
+      if (
+        x < 0 ||
+        x >= grid.length ||
+        y < 0 ||
+        y >= grid[0].length ||
+        grid[x][y] !== '1'
+      ) {
+        continue;
+      }
+      grid[x][y] = '0';
+      queue.push([x, y]);
+    }
+  }
+}
 //DFS
 /**
  * DFS，从当前 1 为入口

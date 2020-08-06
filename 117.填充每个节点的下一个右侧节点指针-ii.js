@@ -78,5 +78,23 @@ function help(root) {
   }
   return null;
 }
+var connect = function (root) {
+  if (root == null) return null;
+  var queue = [root];
+  while (queue.length > 0) {
+    var len = queue.length;
+    for (let i = 0; i < len; i++) {
+      var node = queue.shift();
+      if (i == len - 1) {
+        node.next = null;
+      } else {
+        node.next = queue[0];
+        node.left && queue.push(node.left);
+        node.right && queue.push(node.right);
+      }
+    }
+  }
+  return root;
+};
 
 // @lc code=end

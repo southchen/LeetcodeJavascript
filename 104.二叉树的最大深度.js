@@ -59,23 +59,37 @@ var maxDepth = function (root) {
 每次出栈取高度的最大值，初始化root根节点高度为1 就不用再加1了
 返回更新的高度最终确定比较值
  */
-// var maxDepth = function (root) {
-//   var tmpStack = [{ key: root, val: 1 }];
-//   var depth = 0;
-//   while (tmpStack.length != 0) {
-//     var currObj = tmpStack.pop();
-//     var currNode = currObj.key;
-//     if (currNode != null) {
-//       var currNode_depth = currObj.val;
-//       depth = Math.max(depth, currNode_depth);
-//       if (currNode.left != null) {
-//         tmpStack.push({ key: currNode.left, val: currNode_depth + 1 });
-//       }
-//       if (currNode.right != null) {
-//         tmpStack.push({ key: currNode.right, val: currNode_depth + 1 });
-//       }
-//     }
-//   }
-//   return depth;
-// };
+var maxDepth = function (root) {
+  var tmpStack = [{ key: root, val: 1 }];
+  var depth = 0;
+  while (tmpStack.length != 0) {
+    var currObj = tmpStack.pop();
+    var currNode = currObj.key;
+    if (currNode != null) {
+      var currNode_depth = currObj.val;
+      depth = Math.max(depth, currNode_depth);
+      if (currNode.left != null) {
+        tmpStack.push({ key: currNode.left, val: currNode_depth + 1 });
+      }
+      if (currNode.right != null) {
+        tmpStack.push({ key: currNode.right, val: currNode_depth + 1 });
+      }
+    }
+  }
+  return depth;
+};
+// 迭代
+var maxDepth = function (root) {
+  if (!root) return 0;
+  var queue = [[root, 1]];
+  var maxD = 1;
+  while (queue.length) {
+    var [p, d] = queue.shift();
+    p.left && queue.push([p.left, d + 1]);
+    p.right && queue.push([p.right, d + 1]);
+    maxD = Math.max(maxD, d);
+  }
+  return maxD;
+};
+
 // @lc code=end
